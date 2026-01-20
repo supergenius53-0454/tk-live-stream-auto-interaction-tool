@@ -1,0 +1,98 @@
+```groovy
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    repositories {
+        // Google's Maven repository for Android dependencies
+        google()
+        // Maven Central for other dependencies
+        mavenCentral()
+    }
+    dependencies {
+        // Android Gradle Plugin for Android app development
+        classpath 'com.android.tools.build:gradle:8.0.2'
+    }
+}
+
+// This is the application-level build.gradle file
+apply plugin: 'com.android.application'
+
+// Define project properties
+android {
+    // Compile SDK version for the latest features and improvements
+    compileSdkVersion 34
+
+    defaultConfig {
+        // Unique application ID for identification on the Play Store
+        applicationId "com.madhub.tklivestreamautointe"
+        // Application versioning
+        versionCode 1
+        versionName "1.0.0"
+        // Minimum SDK version to support wider Android versions
+        minSdkVersion 21
+        targetSdkVersion 34
+        
+        // Specify the default language for the application
+        resConfigs "en"
+    }
+
+    buildTypes {
+        release {
+            // Configure release build settings
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+// Add dependencies for the project
+dependencies {
+    // Core Android library for essential Android components
+    implementation 'androidx.core:core-ktx:1.10.1'
+    // UI components for modern user interface design
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    // Material design components for enhanced UI/UX
+    implementation 'com.google.android.material:material:1.9.0'
+    // Lifecycle libraries for managing UI-related data in a lifecycle-conscious way
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.2'
+    
+    // This library is essential for networking operations
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0' // For making network calls to social media APIs
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0' // For JSON serialization and deserialization
+
+    // A library for background operations, which is crucial for 24/7 automation
+    implementation 'androidx.work:work-runtime-ktx:2.8.1' // For scheduling tasks that can run periodically or continuously
+
+    // Dependency for handling image loading in social media apps
+    implementation 'com.github.bumptech.glide:glide:4.15.0' // For efficient image loading
+
+    // Optional: Dependency for analytics tracking to monitor user interactions
+    implementation 'com.google.firebase:firebase-analytics-ktx:21.2.0' // For tracking user engagement
+
+    // Test libraries for unit and UI testing
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}
+
+// In this project, we implement a social media management tool that allows users to automate interactions on various platforms.
+// The architecture supports the usage of MadHub, which can operate on real devices, cloud phones, or emulators, enabling continuous operations.
+// The setup aligns with the necessary Android libraries to ensure a smooth user experience while maintaining compliance with social media API requirements.
+```
+
+### Explanation of Code and Workflow Steps:
+1. **Top-Level Configuration**:
+   - The build script begins by configuring repositories for dependency management, critical for fetching required libraries.
+
+2. **Android Configuration**:
+   - The `android` block defines essential properties such as compile SDK version, application ID, versioning, and minimum & target SDK versions.
+
+3. **Dependencies**:
+   - A variety of libraries are included:
+     - **Core Android Libraries**: Essential for basic functionality.
+     - **Retrofit**: Facilitates network interactions to connect with social media APIs.
+     - **WorkManager**: Enables scheduling of automated tasks for background processes, crucial for 24/7 operations.
+     - **Glide**: Enhances user experience by handling image loading efficiently.
+     - **Firebase Analytics**: Helps track user interactions, beneficial for improving engagement strategies.
+
+### Practical Application:
+This `build.gradle` file sets the foundation for developing an Android application focused on social media management automation, aligning well with MadHub's capabilities. Users can automate operations in real-time, ensuring engagement and functionality across supported social media platforms.
